@@ -4,8 +4,7 @@ import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.view.Menu;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,9 +24,16 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            PopularFragment popFrag = new PopularFragment();
+            getFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame, popFrag)
+                    .commit();
+        }
+
 
         mDrawerLayout =  (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerListener = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_closed) {
+        mDrawerListener = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_closed) {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -79,7 +85,42 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Toast.makeText(this, mBrowseList[position]+ "Selected ", Toast.LENGTH_LONG).show();
+
+
+        switch (position) {
+            case 0:
+                mDrawerLayout.closeDrawers();
+                PopularFragment popFrag = new PopularFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, popFrag)
+                        .commit();
+                break;
+            case 1:
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                break;
+            case 2:
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                break;
+            case 3:
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                break;
+            case 4:
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                break;
+            case 5:
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                break;
+            case 6:
+                mDrawerLayout.closeDrawers();
+                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                break;
+
+        }
         selectItem(position);
 
     }
