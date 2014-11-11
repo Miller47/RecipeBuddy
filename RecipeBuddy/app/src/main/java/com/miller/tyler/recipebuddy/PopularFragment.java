@@ -50,6 +50,7 @@ public class PopularFragment extends ListFragment {
     protected ProgressBar mProgressBar;
     private final String KEY_NAME = "recipeName";
     private final String KEY_DESCRIPTION = "sourceDisplayName";
+    private final String KEY_ID = "id";
 
 
     public PopularFragment() {
@@ -168,11 +169,12 @@ public class PopularFragment extends ListFragment {
         } else {
             try {
                 JSONArray jsonPosts = mRecipeData.getJSONArray("matches");
-                
+
                 mRecipeList = new ArrayList<RecipeData>();
 
                 for (int i = 0; i < jsonPosts.length(); i++) {
                     JSONObject post = jsonPosts.getJSONObject(i);
+                    JSONObject image = post.getJSONObject("imageUrlsBySize");
 
                     RecipeData dataRecipe = new RecipeData();
 
@@ -193,6 +195,11 @@ public class PopularFragment extends ListFragment {
 
                     System.out.println("DES" + description);
                     Log.i("OutPut of recipe", name + ", " + description);
+
+                    String Url = image.getString("90");
+                    Url = Html.fromHtml(Url).toString();
+
+                    dataRecipe.setImageUrl(Url);
 
 
                     mRecipeList.add(dataRecipe);

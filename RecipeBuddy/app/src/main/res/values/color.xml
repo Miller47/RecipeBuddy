@@ -3,4 +3,6 @@
     <color name="new_york_pink">#DE8A75</color>
     <color name="deep_chestnut">#B35240</color>
     <color name="my_pink">#D78F7D</color>
+    <color name="light">#FFEEEEEE</color>
+    <color name="gray">#D0D0D0 </color>
 </resources>

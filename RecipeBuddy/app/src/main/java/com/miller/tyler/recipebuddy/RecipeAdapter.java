@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -26,15 +29,21 @@ public class RecipeAdapter extends ArrayAdapter<RecipeData> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(android.R.layout.simple_list_item_2, parent, false);
+        View view = inflater.inflate(R.layout.recipe_list, parent, false);
 
         //Display brew name and descrption
         RecipeData recipeData = recipeDataList.get(position);
-        TextView name = (TextView) view.findViewById(android.R.id.text1);
+        TextView name = (TextView) view.findViewById(R.id.name_text);
         name.setText(recipeData.getName());
 
-        TextView des =  (TextView) view.findViewById(android.R.id.text2);
+        TextView des =  (TextView) view.findViewById(R.id.source_text);
         des.setText(recipeData.getDescription());
+
+        ImageView imageView = (ImageView) view.findViewById(R.id.recipe_image);
+
+        Picasso.with(getContext())
+                .load(recipeData.getImageUrl())
+                .into(imageView);
 
         return view;
     }
