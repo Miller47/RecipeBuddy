@@ -52,6 +52,7 @@ public class PopularFragment extends ListFragment {
     private final String KEY_NAME = "recipeName";
     private final String KEY_DESCRIPTION = "sourceDisplayName";
     private final String KEY_ID = "id";
+    private final String KEY_TIME = "totalTimeInSeconds";
     public static String KEY_SEARCH = "";
 
 
@@ -207,6 +208,10 @@ public class PopularFragment extends ListFragment {
                     id = Html.fromHtml(id).toString();
 
                     dataRecipe.setRecipeId(id);
+
+                    int time = post.optInt(KEY_TIME, 0);
+
+                    dataRecipe.setTotalTime(time);
 
 
                     mRecipeList.add(dataRecipe);

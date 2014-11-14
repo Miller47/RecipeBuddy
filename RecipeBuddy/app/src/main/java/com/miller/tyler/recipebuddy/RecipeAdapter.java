@@ -31,10 +31,25 @@ public class RecipeAdapter extends ArrayAdapter<RecipeData> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.recipe_list, parent, false);
 
-        //Display brew name and descrption
+        //Display recipe name and descrption
         RecipeData recipeData = recipeDataList.get(position);
         TextView name = (TextView) view.findViewById(R.id.name_text);
         name.setText(recipeData.getName());
+
+        TextView time = (TextView) view.findViewById(R.id.cook_time);
+
+
+        int dur = recipeData.getTotalTime();
+        int min = dur / 60;
+        int sec = dur % 60;
+
+        if (dur == 0) {
+            time.setText("N/A");
+        } else {
+
+            String cookTime = "Time to Cook: " + min + ":" + sec;
+            time.setText(cookTime);
+        }
 
         TextView des =  (TextView) view.findViewById(R.id.source_text);
         des.setText(recipeData.getDescription());

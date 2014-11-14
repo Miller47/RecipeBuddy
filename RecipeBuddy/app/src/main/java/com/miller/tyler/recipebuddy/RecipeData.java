@@ -10,6 +10,10 @@ public class RecipeData {
     private String imageUrl;
     private String recipeId;
 
+
+
+    private int totalTime;
+
     public String getName() {
         return name;
     }
@@ -40,6 +44,14 @@ public class RecipeData {
 
     public void setRecipeId(String recipeId) {
         this.recipeId = recipeId;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(int totalTime) {
+        this.totalTime = totalTime;
     }
 
 
