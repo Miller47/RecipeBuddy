@@ -33,7 +33,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -51,6 +50,7 @@ public class PopularFragment extends ListFragment {
     private final String KEY_NAME = "recipeName";
     private final String KEY_DESCRIPTION = "sourceDisplayName";
     private final String KEY_ID = "id";
+    public static String KEY_SEARCH = "";
 
 
     public PopularFragment() {
@@ -110,7 +110,7 @@ public class PopularFragment extends ListFragment {
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
 
-            HttpGet httpGet = new HttpGet("http://api.yummly.com/v1/api/recipes?_app_id=ef3e29e2&_app_key=0ad244c0fd8063f00a481e6c0cc8f4fc");
+            HttpGet httpGet = new HttpGet("http://api.yummly.com/v1/api/recipes?_app_id=ef3e29e2&_app_key=0ad244c0fd8063f00a481e6c0cc8f4fc&q=" + KEY_SEARCH);
             try {
                 HttpResponse response = client.execute(httpGet);
                 StatusLine statusLine = response.getStatusLine();

@@ -85,40 +85,64 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+        PopularFragment popFrag = new PopularFragment();
+
 
 
         switch (position) {
             case 0:
                 mDrawerLayout.closeDrawers();
-                PopularFragment popFrag = new PopularFragment();
+
+                popFrag.KEY_SEARCH = "";
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, popFrag)
+                        .commit();
+
+
+                break;
+            case 1:
+                mDrawerLayout.closeDrawers();
+
+                popFrag.KEY_SEARCH = "meat";
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, popFrag)
+                        .commit();
+
+
+                break;
+            case 2:
+                mDrawerLayout.closeDrawers();
+                popFrag.KEY_SEARCH = "poultry";
                 getFragmentManager().beginTransaction()
                         .replace(R.id.content_frame, popFrag)
                         .commit();
                 break;
-            case 1:
-                mDrawerLayout.closeDrawers();
-                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
-                break;
-            case 2:
-                mDrawerLayout.closeDrawers();
-                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
-                break;
             case 3:
                 mDrawerLayout.closeDrawers();
-                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                popFrag.KEY_SEARCH = "desserts";
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, popFrag)
+                        .commit();
                 break;
             case 4:
                 mDrawerLayout.closeDrawers();
-                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                popFrag.KEY_SEARCH = "salads";
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, popFrag)
+                        .commit();
                 break;
             case 5:
                 mDrawerLayout.closeDrawers();
-                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                popFrag.KEY_SEARCH = "drinks";
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, popFrag)
+                        .commit();
                 break;
             case 6:
                 mDrawerLayout.closeDrawers();
                 Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
                 break;
+
 
         }
         selectItem(position);
