@@ -34,7 +34,8 @@
         android:layout_alignTop="@+id/recipe_image"
         android:layout_toRightOf="@+id/recipe_image"
         android:layout_toEndOf="@+id/recipe_image"
-        android:layout_marginLeft="28dp" />
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"

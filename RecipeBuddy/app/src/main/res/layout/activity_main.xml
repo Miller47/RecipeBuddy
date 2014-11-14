@@ -23,11 +23,14 @@
     <EditText
         android:id="@+id/search_recipe"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:hint="Search for recipes"
-        android:textColorHint="#fff"
+        android:textColorHint="@color/gray"
         android:paddingBottom="5dp"
-        android:textColor="#fff">
+        android:singleLine="true"
+        android:imeOptions="actionSearch"
+        android:background="@android:drawable/editbox_background_normal"
+        android:layout_marginBottom="5dp">
     </EditText>
 
         <RelativeLayout

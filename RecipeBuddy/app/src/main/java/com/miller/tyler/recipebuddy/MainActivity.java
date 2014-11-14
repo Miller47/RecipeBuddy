@@ -1,15 +1,21 @@
 package com.miller.tyler.recipebuddy;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -19,6 +25,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     private ListView mDrawerList;
     private String[] mBrowseList;
     private ActionBarDrawerToggle mDrawerListener;
+    private EditText mSearchBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +37,32 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                     .replace(R.id.content_frame, popFrag)
                     .commit();
         }
+
+        //set up search box
+        mSearchBox = (EditText) findViewById(R.id.search_recipe);
+
+        mSearchBox.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                PopularFragment popFrag = new PopularFragment();
+
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+
+                    popFrag.KEY_SEARCH = mSearchBox.getText().toString();
+
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.content_frame, popFrag)
+                            .commit();
+
+                    mDrawerLayout.closeDrawers();
+                    dimissKeyboard();
+
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
         mDrawerLayout =  (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -159,5 +192,15 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     public void setTitle(String title) {
 
         getActionBar().setTitle(title);
+    }
+
+    private void dimissKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        imm.hideSoftInputFromWindow(mSearchBox.getWindowToken(), 0);
+
+        mSearchBox.setText(null);
+
+
     }
 }

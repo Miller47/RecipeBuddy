@@ -30,8 +30,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,7 +111,7 @@ public class PopularFragment extends ListFragment {
             JSONObject jsonResponse = null;
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
-
+            UrlEncoding();
             HttpGet httpGet = new HttpGet("http://api.yummly.com/v1/api/recipes?_app_id=ef3e29e2&_app_key=0ad244c0fd8063f00a481e6c0cc8f4fc&q=" + KEY_SEARCH);
             try {
                 HttpResponse response = client.execute(httpGet);
@@ -201,6 +203,11 @@ public class PopularFragment extends ListFragment {
 
                     dataRecipe.setImageUrl(Url);
 
+                    String id = post.getString(KEY_ID);
+                    id = Html.fromHtml(id).toString();
+
+                    dataRecipe.setRecipeId(id);
+
 
                     mRecipeList.add(dataRecipe);
 
@@ -218,6 +225,14 @@ public class PopularFragment extends ListFragment {
                 Log.e(TAG, "exception4 caught: ", e);
                 //udateDispayForError();
             }
+        }
+    }
+
+    private void UrlEncoding() {
+        try {
+            KEY_SEARCH = URLEncoder.encode(KEY_SEARCH, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            Log.e(TAG, "Encoding issue", e);
         }
     }
 

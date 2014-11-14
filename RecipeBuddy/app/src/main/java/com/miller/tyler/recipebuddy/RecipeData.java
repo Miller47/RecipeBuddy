@@ -5,6 +5,11 @@ package com.miller.tyler.recipebuddy;
  */
 public class RecipeData {
 
+    private String name;
+    private String description;
+    private String imageUrl;
+    private String recipeId;
+
     public String getName() {
         return name;
     }
@@ -17,13 +22,6 @@ public class RecipeData {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    private String name;
-    private String description;
-
     public String getImageUrl() {
         return imageUrl;
     }
@@ -32,5 +30,17 @@ public class RecipeData {
         this.imageUrl = imageUrl;
     }
 
-    private String imageUrl;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRecipeId() {
+        return recipeId;
+    }
+
+    public void setRecipeId(String recipeId) {
+        this.recipeId = recipeId;
+    }
+
+
 }
