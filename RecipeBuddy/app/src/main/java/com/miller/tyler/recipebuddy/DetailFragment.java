@@ -219,7 +219,8 @@ public class DetailFragment extends Fragment {
                     for (int i = 0; i < temp.length(); i++) {
                         mIngredientLines.add(temp.get(i).toString());
                     }
-                    mIngred.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, mIngredientLines));
+                    mIngred.setAdapter(new ArrayAdapter<String>(getActivity(), R.layout.ingredient_list, R.id.list_content, mIngredientLines));
+
                 }
 
 
