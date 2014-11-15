@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -211,6 +212,18 @@ public class DetailFragment extends Fragment {
 
                 //Set up button
                 mSourceUrl = source.getString("sourceRecipeUrl");
+                final String displayname = source.getString("sourceDisplayName");
+
+                mCook.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), WebviewActivity.class);
+                        intent.setData(Uri.parse(mSourceUrl));
+                        intent.putExtra("name", displayname);
+
+                        startActivity(intent);
+                    }
+                });
 
                 //Set arraylist to ingredientLines array
                 mIngredientLines = new ArrayList<String>();

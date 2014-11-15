@@ -1,5 +1,6 @@
 package com.miller.tyler.recipebuddy;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -54,6 +55,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                     getFragmentManager().beginTransaction()
                             .replace(R.id.content_frame, popFrag)
                             .commit();
+                    //Set actionbar title
+                    ActionBar ab = getActionBar();
+                    ab.setTitle("Recipe Buddy");
 
                     mDrawerLayout.closeDrawers();
                     dimissKeyboard();
