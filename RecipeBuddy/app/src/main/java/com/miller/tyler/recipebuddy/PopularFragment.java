@@ -3,6 +3,7 @@ package com.miller.tyler.recipebuddy;
 
 import android.app.ListFragment;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -103,6 +105,22 @@ public class PopularFragment extends ListFragment {
         return rootView;
     }
 
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        RecipeData recipeData = (RecipeData) l.getItemAtPosition(position);
+
+        Bundle bundle =  new Bundle();
+        bundle.putString("recipeId", recipeData.getRecipeId());
+
+
+
+        Intent intent = new Intent(v.getContext(), DetailActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
     private class GetRecipesTask extends AsyncTask<Object, Void, JSONObject> {
 
         @Override
@@ -113,7 +131,8 @@ public class PopularFragment extends ListFragment {
             StringBuilder builder = new StringBuilder();
             HttpClient client = new DefaultHttpClient();
             UrlEncoding();
-            HttpGet httpGet = new HttpGet("http://api.yummly.com/v1/api/recipes?_app_id=ef3e29e2&_app_key=0ad244c0fd8063f00a481e6c0cc8f4fc&q=" + KEY_SEARCH);
+            HttpGet httpGet = new
+                    HttpGet("http://api.yummly.com/v1/api/recipes?_app_id=ef3e29e2&_app_key=0ad244c0fd8063f00a481e6c0cc8f4fc&q=" + KEY_SEARCH + "&maxResult=20");
             try {
                 HttpResponse response = client.execute(httpGet);
                 StatusLine statusLine = response.getStatusLine();

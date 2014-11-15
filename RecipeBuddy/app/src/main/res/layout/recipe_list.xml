@@ -46,7 +46,8 @@
         android:textColor="@android:color/tertiary_text_dark"
         android:layout_below="@+id/cook_time"
         android:layout_alignLeft="@+id/name_text"
-        android:layout_alignStart="@+id/name_text" />
+        android:layout_alignStart="@+id/name_text"
+        android:layout_marginRight="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,7 +57,8 @@
             android:layout_below="@+id/name_text"
             android:layout_alignLeft="@+id/source_text"
             android:layout_alignStart="@+id/source_text"
-            android:textColor="@android:color/secondary_text_dark"/>
+            android:textColor="@android:color/secondary_text_dark"
+            android:layout_marginRight="10dp"/>
 
     </RelativeLayout>
 </LinearLayout>

@@ -174,6 +174,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             case 6:
                 mDrawerLayout.closeDrawers();
                 Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+//                DetailFragment detailFragment = new DetailFragment();
+//                getFragmentManager().beginTransaction()
+//                        .replace(R.id.content_frame, detailFragment)
+//                        .commit();
                 break;
 
 

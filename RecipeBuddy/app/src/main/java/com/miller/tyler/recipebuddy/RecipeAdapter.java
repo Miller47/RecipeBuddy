@@ -47,7 +47,7 @@ public class RecipeAdapter extends ArrayAdapter<RecipeData> {
             time.setText("N/A");
         } else {
 
-            String cookTime = "Time to Cook: " + min + ":" + sec;
+            String cookTime = "Time to Cook: " + min + " minutes " + sec + " seconds";
             time.setText(cookTime);
         }
 
