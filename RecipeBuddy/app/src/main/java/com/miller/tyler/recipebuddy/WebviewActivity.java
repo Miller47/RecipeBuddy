@@ -5,8 +5,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import java.net.URL;
 
 
 public class WebviewActivity extends Activity {
@@ -25,6 +30,7 @@ public class WebviewActivity extends Activity {
         mUrl = recipeUri.toString();
 
         mWebView = (WebView) findViewById(R.id.webView);
+        mWebView.setWebViewClient(new WebViewClient());
         mWebView.loadUrl(mUrl);
 
         //Set actionbar title
@@ -41,7 +47,23 @@ public class WebviewActivity extends Activity {
 
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(event.getAction() == KeyEvent.ACTION_DOWN){
+            switch(keyCode)
+            {
+                case KeyEvent.KEYCODE_BACK:
+                    if(mWebView.canGoBack()){
+                        mWebView.goBack();
+                    }else{
+                        finish();
+                    }
+                    return true;
+            }
 
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
