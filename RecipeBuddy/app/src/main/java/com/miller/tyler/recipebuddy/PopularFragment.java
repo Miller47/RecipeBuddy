@@ -76,7 +76,11 @@ public class PopularFragment extends ListFragment {
 
         if (isOnline()) {
 
-            mProgressBar.setVisibility(View.VISIBLE);
+            if (mRecipeData == null) {
+
+
+                mProgressBar.setVisibility(View.VISIBLE);
+            }
 
             getRecipeTask = new GetRecipesTask();
             getRecipeTask.execute();

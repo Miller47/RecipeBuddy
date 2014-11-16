@@ -114,8 +114,11 @@ public class DetailFragment extends Fragment {
     private void requestData() {
 
         if (isOnline()) {
+            if (mRecipeData == null) {
 
-            mProgressBar.setVisibility(View.VISIBLE);
+
+                mProgressBar.setVisibility(View.VISIBLE);
+            }
 
             getRecipeTask = new GetRecipesTask();
             getRecipeTask.execute();

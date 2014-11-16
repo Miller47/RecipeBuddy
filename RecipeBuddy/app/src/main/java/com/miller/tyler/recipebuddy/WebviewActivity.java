@@ -29,8 +29,20 @@ public class WebviewActivity extends Activity {
         Uri recipeUri = intent.getData();
         mUrl = recipeUri.toString();
 
+        WebViewClient webViewClient = new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+        };
+
         mWebView = (WebView) findViewById(R.id.webView);
-        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.getSettings().setBuiltInZoomControls(true);
+        mWebView.getSettings().setSupportZoom(true);
+        mWebView.getSettings().setUseWideViewPort(true);
+        mWebView.getSettings().setLoadWithOverviewMode(true);
+        mWebView.setWebViewClient(webViewClient);
         mWebView.loadUrl(mUrl);
 
         //Set actionbar title
