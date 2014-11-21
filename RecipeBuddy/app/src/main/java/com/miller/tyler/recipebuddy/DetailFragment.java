@@ -61,7 +61,7 @@ public class DetailFragment extends Fragment {
     protected Button mCook;
     protected ListView mIngred;
     private String mImageUrl;
-    private String mSourceUrl;
+    public static String mSourceUrl;
     private ArrayList<String> mIngredientLines;
 
 

@@ -23,5 +23,8 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="action_share">Share</string>
     <string name="title_activity_webview">WebviewActivity</string>
+    <string name="result">Result</string>
+    <string name="value_convert">Value to Convert</string>
+    <string name="convert">Convert</string>
 
 </resources>

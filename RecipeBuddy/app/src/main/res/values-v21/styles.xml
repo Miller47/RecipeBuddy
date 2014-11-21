@@ -2,13 +2,21 @@
 <resources>
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/ActionBar</item>
+        <item name="android:colorPrimaryDark">@color/deep_chestnut</item>
     </style>
     <style name="ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/my_pink</item>
 
         <item name="android:titleTextStyle">@style/TitleBarTextColor</item>
+
     </style>
     <style name="TitleBarTextColor" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">#fff</item>
     </style>
+
+
+
+
+
+    
 </resources>

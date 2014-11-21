@@ -177,11 +177,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
                 break;
             case 6:
                 mDrawerLayout.closeDrawers();
-                Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
-//                DetailFragment detailFragment = new DetailFragment();
-//                getFragmentManager().beginTransaction()
-//                        .replace(R.id.content_frame, detailFragment)
-//                        .commit();
+                //Toast.makeText(this, mBrowseList[position]+ " Selected ", Toast.LENGTH_LONG).show();
+                ConverterFragment converterFragment = new ConverterFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, converterFragment)
+                        .commit();
                 break;
 
 

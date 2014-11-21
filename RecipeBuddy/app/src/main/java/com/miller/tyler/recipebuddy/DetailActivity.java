@@ -1,6 +1,7 @@
 package com.miller.tyler.recipebuddy;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,12 +40,22 @@ public class DetailActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_share) {
+
+            sharePost();
         } else if (id == android.R.id.home){
             finish();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void sharePost() {
+
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this recipe, sent from Recipe Buddy for Android. " + DetailFragment.mSourceUrl);
+
+        startActivity(Intent.createChooser(shareIntent, "How do you want to share?"));
     }
 }
