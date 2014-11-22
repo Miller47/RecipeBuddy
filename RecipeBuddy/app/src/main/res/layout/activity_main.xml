@@ -19,7 +19,9 @@
     android:layout_width="240dp"
     android:orientation="vertical"
     android:layout_gravity="start"
-    android:background="@color/new_york_pink">
+    android:background="@color/new_york_pink"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
     <EditText
         android:id="@+id/search_recipe"
         android:layout_width="match_parent"
@@ -30,7 +32,9 @@
         android:singleLine="true"
         android:imeOptions="actionSearch"
         android:background="@android:drawable/editbox_background_normal"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="5dp"
+        android:nextFocusUp="@id/search_recipe"
+        android:nextFocusLeft="@id/search_recipe">
     </EditText>
 
         <RelativeLayout

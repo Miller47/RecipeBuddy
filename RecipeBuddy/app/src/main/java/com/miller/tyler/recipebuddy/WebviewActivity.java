@@ -3,13 +3,16 @@ package com.miller.tyler.recipebuddy;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import java.net.URL;
 
@@ -17,7 +20,8 @@ import java.net.URL;
 public class WebviewActivity extends Activity {
 
     protected String mUrl;
-    protected  WebView mWebView;
+    protected WebView mWebView;
+    protected ProgressBar mProBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +38,22 @@ public class WebviewActivity extends Activity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 return false;
             }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                mProBar.setVisibility(View.INVISIBLE);
+
+            }
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+                mProBar.setVisibility(View.VISIBLE);
+            }
         };
 
+        mProBar = (ProgressBar) findViewById(R.id.progressBar);
         mWebView = (WebView) findViewById(R.id.webView);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setBuiltInZoomControls(true);
@@ -44,6 +62,8 @@ public class WebviewActivity extends Activity {
         mWebView.getSettings().setLoadWithOverviewMode(true);
         mWebView.setWebViewClient(webViewClient);
         mWebView.loadUrl(mUrl);
+
+
 
         //Set actionbar title
         ActionBar ab = getActionBar();
