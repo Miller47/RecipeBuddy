@@ -36,5 +36,6 @@
     <string name="convert">Convert</string>
     <string name="title">Sorry!</string>
     <string name="error">Something went wrong!</string>
+    <string name="action_refresh">Refresh</string>
 
 </resources>

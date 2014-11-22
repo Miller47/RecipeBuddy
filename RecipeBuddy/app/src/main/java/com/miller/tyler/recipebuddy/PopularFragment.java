@@ -13,6 +13,9 @@ import android.app.Fragment;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -73,7 +76,10 @@ public class PopularFragment extends ListFragment {
         }
     }
 
-    private void requestData() {
+
+
+
+    public void requestData() {
 
         if (isOnline()) {
 
@@ -97,6 +103,42 @@ public class PopularFragment extends ListFragment {
     public void onResume() {
         super.onResume();
         requestData();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        inflater.inflate(R.menu.main, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_refresh) {
+
+            //Makes sure visible changes occur
+            mRecipeData = null;
+            setListAdapter(null);
+
+            //Makes data request
+            requestData();
+            //Toast.makeText(getActivity(), "Test", Toast.LENGTH_LONG).show();
+
+        }
+
+
+        return super.onOptionsItemSelected(item);
+
     }
 
     @Override
@@ -125,6 +167,8 @@ public class PopularFragment extends ListFragment {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+
 
     private class GetRecipesTask extends AsyncTask<Object, Void, JSONObject> {
 
