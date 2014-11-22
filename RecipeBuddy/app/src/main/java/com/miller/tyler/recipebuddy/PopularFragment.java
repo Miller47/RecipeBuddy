@@ -1,6 +1,7 @@
 package com.miller.tyler.recipebuddy;
 
 
+import android.app.AlertDialog;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
@@ -190,7 +191,7 @@ public class PopularFragment extends ListFragment {
 
         if (mRecipeData == null) {
 
-            //udateDispayForError();
+            udateDispayForError();
 
         } else {
             try {
@@ -251,7 +252,7 @@ public class PopularFragment extends ListFragment {
 
             } catch (JSONException e) {
                 Log.e(TAG, "exception4 caught: ", e);
-                //udateDispayForError();
+                udateDispayForError();
             }
         }
     }
@@ -262,6 +263,17 @@ public class PopularFragment extends ListFragment {
         } catch (UnsupportedEncodingException e) {
             Log.e(TAG, "Encoding issue", e);
         }
+    }
+
+    private void udateDispayForError() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(getString(R.string.title));
+        builder.setMessage(getString(R.string.error));
+        builder.setPositiveButton(android.R.string.ok, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+
     }
 
 

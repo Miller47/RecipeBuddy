@@ -18,6 +18,14 @@
         <item>Measurement Converter</item>
     </string-array>
 
+    <string-array name="convert_to">
+        <item>Teaspoons to Tablespoons</item>
+        <item>Tablespoons to Cups</item>
+        <item>Cups to Pints</item>
+        <item>Pints to Quarts</item>
+        <item>Quarts to Gallons</item>
+    </string-array>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cook_btn">Cook It</string>
     <string name="title_activity_detail">DetailActivity</string>
@@ -26,5 +34,7 @@
     <string name="result">Result</string>
     <string name="value_convert">Value to Convert</string>
     <string name="convert">Convert</string>
+    <string name="title">Sorry!</string>
+    <string name="error">Something went wrong!</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.miller.tyler.recipebuddy;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -211,4 +212,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
 
     }
+
+
 }
