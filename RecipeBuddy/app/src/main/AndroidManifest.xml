@@ -27,7 +27,8 @@
         </activity>
         <activity
             android:name="com.miller.tyler.recipebuddy.WebviewActivity"
-            android:label="@string/title_activity_webview" >
+            android:label="@string/title_activity_webview"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
