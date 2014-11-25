@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinner"
-        android:popupBackground="@color/my_pink"
+        android:popupBackground="@xml/spinner_background"
         android:gravity="center"
         android:layout_marginTop="58dp"
         android:layout_below="@+id/result"

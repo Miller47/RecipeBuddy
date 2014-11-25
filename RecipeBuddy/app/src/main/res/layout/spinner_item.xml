@@ -9,4 +9,5 @@
         android:text="Medium Text"
         android:id="@+id/textView"
         android:gravity="center"
-        android:textColor="@color/light"/>
+        android:textColor="@color/light"
+        android:paddingBottom="25dp"/>

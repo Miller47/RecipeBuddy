@@ -1,5 +1,6 @@
 package com.miller.tyler.recipebuddy;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,6 +13,8 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -97,6 +100,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_row_layout, R.id.row_item, mBrowseList));
 
         mDrawerList.setOnItemClickListener(this);
+
+
     }
 
 
